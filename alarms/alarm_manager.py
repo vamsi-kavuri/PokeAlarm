@@ -179,9 +179,9 @@ class Alarm_Manager(Thread):
 			moves = "unknown"
 		else:
 			try:
-                move1 = get_move_name( move1 )
-                move1 = get_move_name( move_2 )
-                moves = "%s / %s" % ( move_1, move_2 )
+				move1 = get_move_name( move1 )
+				move1 = get_move_name( move_2 )
+				moves = "%s / %s" % ( move_1, move_2 )
 			except ValueError as e:
 				moves = "error"
 		

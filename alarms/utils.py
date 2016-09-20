@@ -23,8 +23,8 @@ from geofence import Geofence
 ########################## GENERAL UTILITIES #########################
 
 def parse_unicode(bytestring):
-    decoded_string = bytestring.decode(sys.getfilesystemencoding())
-    return decoded_string
+	decoded_string = bytestring.decode(sys.getfilesystemencoding())
+	return decoded_string
 	
 def parse_boolean(val):
 	b = val.lower()
@@ -202,25 +202,25 @@ def get_pkmn_id(pokemon_name):
 
 #Returns a String represnting the name of the pokemon from the set LOCALE
 def get_pkmn_name(pokemon_id):
-    if not hasattr(get_pkmn_name, 'names'):
-        file_path = os.path.join( config['ROOT_PATH'], config['LOCALES_DIR'],
-            'pokemon.{}.json'.format(config['LOCALE']))
-        with open(file_path, 'r') as f:
-            get_pkmn_name.names = json.loads(f.read())
-    return get_pkmn_name.names.get(str(pokemon_id)).encode("utf-8")
+	if not hasattr(get_pkmn_name, 'names'):
+		file_path = os.path.join( config['ROOT_PATH'], config['LOCALES_DIR'],
+			'pokemon.{}.json'.format(config['LOCALE']))
+		with open(file_path, 'r') as f:
+			get_pkmn_name.names = json.loads(f.read())
+	return get_pkmn_name.names.get(str(pokemon_id)).encode("utf-8")
 
 #Returns a String represnting the name of the pokemon from the set LOCALE
 def get_move_name(move_id):
-    if not hasattr(get_move_name, 'names'):
-        file_path = os.path.join( config['ROOT_PATH'], config['LOCALES_DIR'],
-            'moves.{}.json'.format(config['LOCALE']))
-        with open(file_path, 'r') as f:
-            get_move_name.names = json.loads(f.read())
-    return get_move_name.names.get(str(pokemon_id)).encode("utf-8")
+	if not hasattr(get_move_name, 'names'):
+		file_path = os.path.join( config['ROOT_PATH'], config['LOCALES_DIR'],
+			'moves.{}.json'.format(config['LOCALE']))
+		with open(file_path, 'r') as f:
+			get_move_name.names = json.loads(f.read())
+	return get_move_name.names.get(str(pokemon_id)).encode("utf-8")
 
 _gym_names = {0:"Neutral", 1:"Mystic", 2:"Valor", 3:"Instinct"}
 def get_team_name(team_number):
-    return _gym_names[team_number]
+	return _gym_names[team_number]
 	
 #Returns a String link to Google Maps Pin at the location	
 def get_gmaps_link(lat, lng):
