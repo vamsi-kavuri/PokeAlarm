@@ -170,7 +170,7 @@ class Alarm_Manager(Thread):
 			individual_values = ""
 		else:
 			try:
-				iv_perfection = ( float(iv_attack) + float(iv_defense) + float(iv_stamina) ) / 45
+				iv_perfection = ( ( float(iv_attack) + float(iv_defense) + float(iv_stamina) ) * 100 ) / 45
 				individual_values = "%.2f%% (%s,%s,%s)" % ( iv_perfection, iv_attack, iv_defense, iv_stamina )
 			except ValueError as e:
 				individual_values = ""
