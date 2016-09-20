@@ -167,18 +167,23 @@ class Alarm_Manager(Thread):
 		move_2 = pkmn['move_2']
 		
 		if( None in ( iv_attack, iv_defense, iv_stamina ) ):
-			individual_values = ""
+			individual_values = "unknown"
 		else:
 			try:
 				iv_perfection = ( ( float(iv_attack) + float(iv_defense) + float(iv_stamina) ) * 100 ) / 45
 				individual_values = "%.2f%% (%s,%s,%s)" % ( iv_perfection, iv_attack, iv_defense, iv_stamina )
 			except ValueError as e:
-				individual_values = ""
+				individual_values = "error"
 			
 		if( None in ( move_1, move_2 ) ):
-			moves = ""
+			moves = "unknown"
 		else:
-			moves = "%s / %s" % ( move_1, move_2 )
+			try:
+                move1 = get_move_name( move1 )
+                move1 = get_move_name( move_2 )
+                moves = "%s / %s" % ( move_1, move_2 )
+			except ValueError as e:
+				moves = "error"
 		
 		pkmn_info = {
 			'id': str(pkmn_id),
