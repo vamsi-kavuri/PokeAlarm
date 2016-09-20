@@ -149,7 +149,7 @@ class Alarm_Manager(Thread):
 			log.info(name + " ignored: outside range")
 			log.debug("Pokemon must be less than %d, but was %d." % (config["NOTIFY_LIST"][pkmn_id], dist))
 			return
-        
+		
 		#Check if the Pokemon is in the geofence
 		if 'GEOFENCE' in config:
 			if config['GEOFENCE'].contains(lat,lng) is not True:
@@ -159,27 +159,27 @@ class Alarm_Manager(Thread):
 		#Trigger the notifcations
 		log.info(name + " notication was triggered!")
 		timestamps = get_timestamps(dissapear_time)
-        
-        iv_attack = pkmn['individual_attack']
-        iv_defense = pkmn['individual_defense']
-        iv_stamina = pkmn['individual_stamina']
-        move_1 = pkmn['move_1']
-        move_2 = pkmn['move_2']
-        
-        if( None in ( iv_attack, iv_defense, iv_stamina ) ):
-            individual_values = ""
-        else:
-            try:
-                iv_perfection = ( float(iv_attack) + float(iv_defense) + float(iv_stamina) ) / 45
-                individual_values = "%.2f%% (%s,%s,%s)" % ( iv_perfection, iv_attack, iv_defense, iv_stamina )
-            except ValueError as e:
-                individual_values = ""
-            
-        if( None in ( move_1, move_2 ) ):
-            moves = ""
-        else:
-            moves = "%s / %s" % ( move_1, move_2 )
-        
+		
+		iv_attack = pkmn['individual_attack']
+		iv_defense = pkmn['individual_defense']
+		iv_stamina = pkmn['individual_stamina']
+		move_1 = pkmn['move_1']
+		move_2 = pkmn['move_2']
+		
+		if( None in ( iv_attack, iv_defense, iv_stamina ) ):
+			individual_values = ""
+		else:
+			try:
+				iv_perfection = ( float(iv_attack) + float(iv_defense) + float(iv_stamina) ) / 45
+				individual_values = "%.2f%% (%s,%s,%s)" % ( iv_perfection, iv_attack, iv_defense, iv_stamina )
+			except ValueError as e:
+				individual_values = ""
+			
+		if( None in ( move_1, move_2 ) ):
+			moves = ""
+		else:
+			moves = "%s / %s" % ( move_1, move_2 )
+		
 		pkmn_info = {
 			'id': str(pkmn_id),
  			'pkmn': name,
