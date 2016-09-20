@@ -216,7 +216,7 @@ def get_move_name(move_id):
 			'moves.{}.json'.format(config['LOCALE']))
 		with open(file_path, 'r') as f:
 			get_move_name.names = json.loads(f.read())
-	return get_move_name.names.get(str(pokemon_id)).encode("utf-8")
+	return get_move_name.names.get(str(move_id)).encode("utf-8")
 
 _gym_names = {0:"Neutral", 1:"Mystic", 2:"Valor", 3:"Instinct"}
 def get_team_name(team_number):
